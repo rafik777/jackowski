@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raport weryfikacji przepowiedni Krzysztofa Jackowskiego („Wizja na żywo”, 2026)</title>
+  <meta name="description" content="Empiryczna weryfikacja 62 minionych przepowiedni Krzysztofa Jackowskiego z korpusu 653 tez wyodrębnionych z 69 filmów „Wizja na żywo” (2026)." />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-soft: #64748b;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --green: #059669;
+      --green-bg: #ecfdf5;
+      --green-border: #a7f3d0;
+      --amber: #d97706;
+      --amber-bg: #fffbeb;
+      --amber-border: #fde68a;
+      --red: #dc2626;
+      --red-bg: #fef2f2;
+      --red-border: #fecaca;
+      --slate: #475569;
+      --slate-bg: #f1f5f9;
+      --slate-border: #cbd5e1;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Top nav */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .brand {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--red);
+      display: inline-block;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.875rem;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #1e3a5f 100%);
+      color: #f8fafc;
+      padding: 3.5rem 1.25rem 3rem;
+    }
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #93c5fd;
+      background: rgba(59, 130, 246, 0.16);
+      border: 1px solid rgba(147, 197, 253, 0.25);
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.75rem, 3.6vw, 2.65rem);
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .hero-lead {
+      max-width: 780px;
+      font-size: 1.05rem;
+      color: #cbd5e1;
+      margin: 0 0 1.5rem;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-bottom: 1.75rem;
+    }
+    .meta-pill {
+      font-size: 0.82rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #e2e8f0;
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+    }
+    .meta-pill strong { color: #ffffff; }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.65rem 1.1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    }
+    .btn:hover { text-decoration: none; }
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+    }
+    .btn-primary:hover { background: var(--accent-dark); }
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.18); }
+
+    /* Layout */
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 72px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 750;
+      letter-spacing: -0.015em;
+      margin: 0 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .sec-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: #e0e7ff;
+      color: #1e40af;
+      font-size: 0.85rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    h3 {
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: -3.2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 10;
+    }
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    }
+    .kpi-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-soft);
+      margin-bottom: 0.35rem;
+    }
+    .kpi-value {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+    }
+    .kpi-sub {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+    .c-red { color: var(--red); }
+    .c-green { color: var(--green); }
+    .c-amber { color: var(--amber); }
+    .c-blue { color: var(--accent); }
+
+    /* Stacked bar */
+    .stacked-bar {
+      display: flex;
+      height: 28px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 1rem 0 1.25rem;
+      background: var(--surface-alt);
+    }
+    .seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .seg-green { background: var(--green); }
+    .seg-amber { background: var(--amber); }
+    .seg-red { background: var(--red); }
+    .seg-slate { background: #64748b; }
+
+    /* Tables */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 0.75rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      padding: 0.7rem 0.85rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+    th {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-soft);
+      background: var(--surface-alt);
+      font-weight: 700;
+    }
+    th.num, td.num { text-align: right; white-space: nowrap; }
+    tbody tr:last-child td { border-bottom: none; }
+    tr.total-row td {
+      font-weight: 700;
+      background: var(--surface-alt);
+      border-top: 2px solid var(--border);
+    }
+
+    /* Inline bars in tables */
+    .bar-cell {
+      min-width: 140px;
+    }
+    .bar-track {
+      height: 10px;
+      background: var(--surface-alt);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+    .bar-fill.red { background: var(--red); }
+    .bar-fill.amber { background: var(--amber); }
+    .bar-fill.slate { background: #475569; }
+
+    /* Callouts */
+    .callout {
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      margin: 1.25rem 0;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+    }
+    .callout-red {
+      background: var(--red-bg);
+      border-color: var(--red-border);
+    }
+    .callout-amber {
+      background: var(--amber-bg);
+      border-color: var(--amber-border);
+    }
+    .callout-green {
+      background: var(--green-bg);
+      border-color: var(--green-border);
+    }
+    .callout h3 { margin-top: 0; }
+    .callout ul, .callout ol { margin: 0.5rem 0 0; padding-left: 1.25rem; }
+    .callout li { margin-bottom: 0.45rem; }
+
+    /* Two-column grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1rem;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+    .b-green { background: var(--green-bg); color: #065f46; border-color: var(--green-border); }
+    .b-amber { background: var(--amber-bg); color: #92400e; border-color: var(--amber-border); }
+    .b-red { background: var(--red-bg); color: #991b1b; border-color: var(--red-border); }
+    .b-slate { background: var(--slate-bg); color: #334155; border-color: var(--slate-border); }
+    .b-blue { background: #eff6ff; color: #1e40af; border-color: #bfdbfe; }
+
+    /* Mechanism cards */
+    .mech-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.25rem;
+      box-shadow: var(--shadow);
+    }
+    .mech-card h4 {
+      margin: 0 0 0.45rem;
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .mech-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Verdict box */
+    .verdict-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #f8fafc;
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+    }
+    .verdict-box h2 { color: #ffffff; margin-top: 0; }
+    .verdict-box .verdict-lead {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fca5a5;
+      margin: 0 0 1rem;
+    }
+    .verdict-box ul {
+      margin: 0 0 1.25rem;
+      padding-left: 1.25rem;
+      color: #e2e8f0;
+    }
+    .verdict-box li { margin-bottom: 0.5rem; }
+    .verdict-box p:last-child { margin-bottom: 0; color: #cbd5e1; }
+
+    /* Downloads */
+    .dl-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1rem;
+    }
+    .dl-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.85rem;
+      box-shadow: var(--shadow);
+      transition: border-color 0.15s, transform 0.1s;
+    }
+    .dl-card:hover {
+      border-color: #93c5fd;
+      transform: translateY(-1px);
+    }
+    .dl-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .dl-ext {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+    .ext-csv { background: #dcfce7; color: #166534; }
+    .ext-json { background: #dbeafe; color: #1e40af; }
+    .ext-db { background: #f3e8ff; color: #6b21a8; }
+    .ext-md { background: #f1f5f9; color: #334155; }
+    .ext-py { background: #fef3c7; color: #92400e; }
+    .dl-size {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .dl-title {
+      font-weight: 700;
+      font-size: 0.96rem;
+      margin: 0.35rem 0 0.25rem;
+      word-break: break-word;
+    }
+    .dl-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .dl-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      width: 100%;
+      padding: 0.55rem 0.9rem;
+      border-radius: 8px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+    .dl-btn:hover {
+      background: #eff6ff;
+      border-color: #93c5fd;
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+
+    /* Interactive Explorer */
+    .explorer-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .search-input {
+      flex: 1 1 260px;
+      padding: 0.6rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.92rem;
+      background: var(--surface);
+      color: var(--text);
+    }
+    .search-input:focus {
+      outline: 2px solid #93c5fd;
+      border-color: var(--accent);
+    }
+    .select-input {
+      padding: 0.6rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      background: var(--surface);
+      color: var(--text);
+    }
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1rem;
+    }
+    .pill-btn {
+      padding: 0.38rem 0.78rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .pill-btn.active {
+      background: var(--text);
+      color: #ffffff;
+      border-color: var(--text);
+    }
+    .claims-meta {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      margin-bottom: 0.85rem;
+    }
+    .claim-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .claim-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.25rem;
+      box-shadow: var(--shadow);
+    }
+    .claim-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .claim-id {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.82rem;
+      color: var(--text-soft);
+      font-weight: 700;
+    }
+    .claim-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .claim-title {
+      font-weight: 650;
+      margin: 0 0 0.55rem;
+      font-size: 0.98rem;
+    }
+    .claim-quote {
+      margin: 0 0 0.65rem;
+      padding: 0.55rem 0.85rem;
+      border-left: 3px solid var(--border);
+      background: var(--surface-alt);
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      border-radius: 0 6px 6px 0;
+    }
+    .claim-just {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0 0 0.7rem;
+    }
+    .claim-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text-soft);
+      border-top: 1px solid var(--border);
+      padding-top: 0.6rem;
+    }
+    .yt-link {
+      font-weight: 600;
+      color: #b91c1c;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.86em;
+      background: var(--surface-alt);
+      padding: 0.12rem 0.35rem;
+      border-radius: 4px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 0.86rem;
+      background: var(--surface);
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 2.5rem 1rem 3.5rem; }
+      .kpi-grid { margin-top: -2.2rem; }
+      .card { padding: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        Weryfikacja „Wizja na żywo” 2026
+      </div>
+      <div class="nav-links">
+        <a href="#wyniki">Wyniki</a>
+        <a href="#konkretnosc">Konkretność</a>
+        <a href="#motywy">Motywy</a>
+        <a href="#mechanizmy">Mechanizmy</a>
+        <a href="#wniosek">Wniosek</a>
+        <a href="#przegladarka">62 tezy</a>
+        <a href="#pliki">Pobierz dane</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Raport empiryczny • 2026-11-21</div>
+      <h1>Raport weryfikacji przepowiedni Krzysztofa Jackowskiego („Wizja na żywo”, 2026)</h1>
+      <p class="hero-lead">
+        Analiza 69 nagrań z <code>archiwumwizji.pl</code> (28 maja – 20 listopada 2026 r.),
+        653 wyodrębnionych tez prognostycznych oraz pełna weryfikacja faktograficzna wszystkich
+        <strong>62 przepowiedni</strong>, których horyzont czasowy minął przed <code>2026-11-21</code>.
+      </p>
+      <div class="hero-meta">
+        <span class="meta-pill">Data odniesienia: <strong>2026-11-21</strong></span>
+        <span class="meta-pill">Korpus: <strong>69 filmów</strong> (68 transkrypcji, 67 z tezami)</span>
+        <span class="meta-pill">Wyodrębnione tezy: <strong>653</strong></span>
+        <span class="meta-pill">Zweryfikowane minione: <strong>62</strong></span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#pliki">⬇ Pobierz CSV, JSON i SQLite DB</a>
+        <a class="btn btn-ghost" href="#przegladarka">🔍 Przeglądaj 62 zweryfikowane tezy</a>
+        <a class="btn btn-ghost" href="https://github.com/rafik777/jackowski" target="_blank" rel="noopener">Repozytorium GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- KPI -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Konkretne trafienia</div>
+        <div class="kpi-value c-red">0 / 11 (0%)</div>
+        <div class="kpi-sub">Wśród tez o wysokiej konkretności i falsyfikowalności</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Niepotwierdzone</div>
+        <div class="kpi-value c-red">53,2%</div>
+        <div class="kpi-sub">33 z 62 tez (+ 11,3% zbyt ogólnych do oceny)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Potwierdzone ogółem</div>
+        <div class="kpi-value c-green">6,5%</div>
+        <div class="kpi-sub">4 z 62 tez (3× status quo/bessa, 1× trwający konflikt)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Ekstrapolacja newsów</div>
+        <div class="kpi-value c-blue">79,0%</div>
+        <div class="kpi-sub">49 z 62 tez opartych na bieżących wiadomościach</div>
+      </div>
+    </div>
+
+    <!-- Section 1 -->
+    <section id="wyniki">
+      <h2><span class="sec-num">1</span> Wyniki weryfikacji 62 minionych przepowiedni</h2>
+      <div class="card">
+        <div class="stacked-bar" aria-label="Rozkład werdyktów">
+          <div class="seg seg-green" style="width: 6.5%" title="Potwierdzona: 4 (6,5%)">6,5%</div>
+          <div class="seg seg-amber" style="width: 29.0%" title="Częściowo potwierdzona: 18 (29,0%)">29,0%</div>
+          <div class="seg seg-red" style="width: 53.2%" title="Niepotwierdzona: 33 (53,2%)">53,2%</div>
+          <div class="seg seg-slate" style="width: 11.3%" title="Nieweryfikowalna: 7 (11,3%)">11,3%</div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Werdykt</th>
+                <th class="num">Liczba</th>
+                <th class="num">Udział</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge b-green">Potwierdzona</span></td>
+                <td class="num"><strong>4</strong></td>
+                <td class="num"><strong>6,5%</strong></td>
+              </tr>
+              <tr>
+                <td><span class="badge b-amber">Częściowo potwierdzona</span></td>
+                <td class="num"><strong>18</strong></td>
+                <td class="num"><strong>29,0%</strong></td>
+              </tr>
+              <tr>
+                <td><span class="badge b-red">Niepotwierdzona</span></td>
+                <td class="num"><strong>33</strong></td>
+                <td class="num"><strong>53,2%</strong></td>
+              </tr>
+              <tr>
+                <td><span class="badge b-slate">Nieweryfikowalna (zbyt ogólna)</span></td>
+                <td class="num"><strong>7</strong></td>
+                <td class="num"><strong>11,3%</strong></td>
+              </tr>
+              <tr class="total-row">
+                <td>Razem</td>
+                <td class="num">62</td>
+                <td class="num">100,0%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-red">
+          <h3>Kluczowe rozbicie: co się dzieje, gdy przepowiednia jest naprawdę konkretna?</h3>
+          <p style="margin-top:0">
+            Wśród 62 zweryfikowanych tez <strong>11 miało wysoką konkretność</strong> (konkretna data/okno kilku dni, konkretny podmiot i falsyfikowalne zdarzenie):
+          </p>
+          <ul>
+            <li><strong>Potwierdzone:</strong> <strong>0 / 11 (0,0%)</strong></li>
+            <li><strong>Częściowo potwierdzone:</strong> <strong>2 / 11 (18,2%)</strong></li>
+            <li><strong>Niepotwierdzone:</strong> <strong>9 / 11 (81,8%)</strong> — m.in.:
+              <ul>
+                <li>wielkie uderzenie USA i Izraela na Iran dokładnie między 9 a 17 września 2026 (<code>ID=490</code>),</li>
+                <li>zamach bombowy ok. 25 lipca 2026 po 40 dniach spokoju (<code>ID=569</code>),</li>
+                <li>zmasowany atak Iranu na Izrael w ciągu 5 dni od 11 czerwca (<code>ID=577</code>),</li>
+                <li>tajfuny nad Czechami, Słowacją, Węgrami, Rumunią i okolicami Rzeszowa latem 2026 (<code>ID=571</code>),</li>
+                <li>wielki wyż i stabilna ładna pogoda 20 sierpnia – 20 września 2026 (<code>ID=446</code>),</li>
+                <li>głośne wydarzenia wokół Trybunału Konstytucyjnego w konkretną środę 4 listopada (<code>ID=82</code>).</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="callout callout-green">
+          <h3>A jakie były 4 „potwierdzone” tezy?</h3>
+          <p style="margin-top:0">Żadna z 4 potwierdzonych tez nie miała cech nieprawdopodobnego, ponadnaturalnego trafienia:</p>
+          <ol>
+            <li><strong><code>ID=437</code> (<code>2026-07-24</code>, niska konkretność):</strong> <em>„W najbliższym okresie czasu nie dojdzie do blokady internetu.”</em> — prognoza zachowania status quo („nic się nie wydarzy”).</li>
+            <li><strong><code>ID=615</code> (<code>2026-06-05</code>, średnia konkretność):</strong> <em>„W czerwcu zarówno w Tunezji, jak i w Egipcie będzie bezpiecznie.”</em> — kolejna prognoza status quo (brak zamachów w kurortach w jednym miesiącu).</li>
+            <li><strong><code>ID=475</code> (<code>2026-07-14</code>, średnia konkretność, ekstrapolacja newsów):</strong> <em>„Bitcoin nie powróci do swoich wcześniejszych szczytowych poziomów cenowych przynajmniej w najbliższym czasie.”</em> — w dniu wypowiedzi BTC kosztował ~63 tys. USD przy historycznym szczycie ~126 tys. USD (październik 2025); prognoza, że nie wzrośnie szybko o +100% w trakcie bessy, to zwykła ekstrapolacja rynkowa.</li>
+            <li><strong><code>ID=641</code> (<code>2026-05-28</code>, średnia konkretność, ekstrapolacja newsów):</strong> <em>„W czerwcu wznowione zostaną okazjonalne działania wojenne przeciwko Iranowi wraz z irańskimi atakami odwetowymi, lecz bez zmasowanego ataku i bez lądowej interwencji USA oraz Izraela.”</em> — wojna USA/Izraela z Iranem trwała już od lutego 2026, a w maju obowiązywał kruchy rozejm przerywany starciami; scenariusz „ograniczonych starć bez inwazji lądowej” odpowiadał konsensusowi analityków geopolitycznych z końca maja.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="konkretnosc">
+      <h2><span class="sec-num">2</span> Konkretność i podatność na dopasowanie (62 tezy)</h2>
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Parametr</th>
+                <th class="num">Wysoka</th>
+                <th class="num">Średnia</th>
+                <th class="num">Niska</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Konkretność / falsyfikowalność tezy</strong></td>
+                <td class="num">11 (17,7%)</td>
+                <td class="num">37 (59,7%)</td>
+                <td class="num">14 (22,6%)</td>
+              </tr>
+              <tr>
+                <td><strong>Podatność na dopasowanie <em>post factum</em></strong></td>
+                <td class="num">29 (46,8%)</td>
+                <td class="num">20 (32,3%)</td>
+                <td class="num">13 (21,0%)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid-2" style="margin-top: 1rem;">
+          <div class="callout" style="margin:0">
+            <strong>79,0% (49 / 62)</strong> zweryfikowanych tez zostało zakwalifikowanych jako <strong>ekstrapolacja bieżących newsów</strong> (tematów już obecnych w mediach w dniu nagrania).
+          </div>
+          <div class="callout" style="margin:0">
+            <strong>79,0% (49 / 62)</strong> ma wysoką lub średnią podatność na <strong>dopasowanie <em>post factum</em></strong> do rozmaitych zdarzeń.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section id="motywy">
+      <h2><span class="sec-num">3</span> Powtarzalność motywów w całym korpusie (653 tezy / 67 filmów)</h2>
+      <div class="card">
+        <p style="margin-top:0; color: var(--text-muted);">
+          Przepowiednie Jackowskiego nie są zróżnicowanym zbiorem niezależnych wglądów — opierają się na kilkunastu stałych, powtarzanych co kilka dni kliszach katastroficznych:
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Motyw</th>
+                <th class="num">Tezy (z 653)</th>
+                <th class="num">Filmy (z 67)</th>
+                <th class="num">Udział filmów</th>
+                <th class="bar-cell">Skala</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Wojna / ataki zbrojne / rakiety / eskalacja</td><td class="num">185</td><td class="num">61</td><td class="num"><strong>91%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill red" style="width:91%"></div></div></td></tr>
+              <tr><td>Rosja / Putin / Ukraina / Białoruś</td><td class="num">158</td><td class="num">53</td><td class="num"><strong>79%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill red" style="width:79%"></div></div></td></tr>
+              <tr><td>Iran / Izrael / Bliski Wschód</td><td class="num">126</td><td class="num">47</td><td class="num"><strong>70%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill red" style="width:70%"></div></div></td></tr>
+              <tr><td>Prowokacja / granica / ewakuacja / stan wyjątkowy / drony / fałszywa flaga</td><td class="num">78</td><td class="num">43</td><td class="num"><strong>64%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill amber" style="width:64%"></div></div></td></tr>
+              <tr><td>Polska polityka / zamach stanu / rząd / Tusk / Nawrocki / wybory</td><td class="num">72</td><td class="num">41</td><td class="num"><strong>61%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill amber" style="width:61%"></div></div></td></tr>
+              <tr><td>Krach finansowy / kryzys / banki / dolar / giełda / kryptowaluty</td><td class="num">104</td><td class="num">40</td><td class="num"><strong>60%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill amber" style="width:60%"></div></div></td></tr>
+              <tr><td>Zamieszki / protesty / panika / chaos społeczny</td><td class="num">45</td><td class="num">30</td><td class="num"><strong>45%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:45%"></div></div></td></tr>
+              <tr><td>Skażenie / broń jądrowa / promieniowanie</td><td class="num">34</td><td class="num">25</td><td class="num"><strong>37%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:37%"></div></div></td></tr>
+              <tr><td>Nowa pandemia / zaraza / epidemia</td><td class="num">27</td><td class="num">18</td><td class="num"><strong>27%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:27%"></div></div></td></tr>
+              <tr><td>Katastrofy / pogoda / upały / tajfuny / powodzie</td><td class="num">16</td><td class="num">13</td><td class="num"><strong>19%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill slate" style="width:19%"></div></div></td></tr>
+              <tr><td>Cyberatak / awaria internetu / blackout / brak prądu</td><td class="num">13</td><td class="num">10</td><td class="num"><strong>15%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill slate" style="width:15%"></div></div></td></tr>
+              <tr><td>AI / kontrola cyfrowa / inwigilacja</td><td class="num">7</td><td class="num">6</td><td class="num"><strong>9%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill slate" style="width:9%"></div></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-amber" style="margin-bottom:0">
+          Dodatkowo aż <strong>366 z 653 tez (56,1%)</strong> w ogóle <strong>nie zawiera żadnego horyzontu czasowego</strong> (<code>nieokreślony</code>), co czyni je z definicji niefalsyfikowalnymi — nigdy nie można wykazać, że się nie sprawdziły.
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section id="mechanizmy">
+      <h2><span class="sec-num">4</span> Mechanizmy psychologiczne, poznawcze, statystyczne i językowe</h2>
+      <div class="card" style="margin-bottom: 1.25rem;">
+        <p style="margin-top:0; color: var(--text-muted);">
+          W analizowanym korpusie wyraźnie dominuje zestaw klasycznych mechanizmów znanych z psychologii poznawczej i analizy wróżbiarstwa (<em>cold reading</em> / pseudoprognozowanie):
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Mechanizm wykryty w 62 minionych tezach</th>
+                <th class="num">Wystąpienia</th>
+                <th class="num">Udział</th>
+                <th class="bar-cell">Skala</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Ekstrapolacja bieżących newsów</td><td class="num">49</td><td class="num"><strong>79,0%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:79%"></div></div></td></tr>
+              <tr><td>Asekuracja językowa (<em>hedging</em>)</td><td class="num">44</td><td class="num"><strong>71,0%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:71%"></div></div></td></tr>
+              <tr><td>Katastrofizm eskalacyjny</td><td class="num">42</td><td class="num"><strong>67,7%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill red" style="width:67.7%"></div></div></td></tr>
+              <tr><td>Podatność na dopasowanie <em>post factum</em></td><td class="num">26</td><td class="num"><strong>41,9%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill amber" style="width:41.9%"></div></div></td></tr>
+              <tr><td>Brak konkretnego miejsca lub podmiotu</td><td class="num">26</td><td class="num"><strong>41,9%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill amber" style="width:41.9%"></div></div></td></tr>
+              <tr><td>Ogólnikowość / efekt Barnuma</td><td class="num">20</td><td class="num"><strong>32,3%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill slate" style="width:32.3%"></div></div></td></tr>
+              <tr><td>Brak falsyfikowalności</td><td class="num">12</td><td class="num"><strong>19,4%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill slate" style="width:19.4%"></div></div></td></tr>
+              <tr><td>Ruchoma bramka / wielokrotne powtarzanie</td><td class="num">4</td><td class="num"><strong>6,5%</strong></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill slate" style="width:6.5%"></div></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="mech-card">
+          <h4>1. Ekstrapolacja bieżących wiadomości (79%)</h4>
+          <p>Większość „wizji” dotyczy kryzysów, o których media mówią już tego samego dnia (wojna z Iranem, wojna w Ukrainie, spory wokół TK/rządu/prezydenta, granica wschodnia, spadki na Bitcoinie). Jeśli w trwającym konflikcie dojdzie do kolejnego incydentu, łatwo przypisać sobie trafienie.</p>
+        </div>
+        <div class="mech-card">
+          <h4>2. Strzelanie śrutem (<em>shotgunning</em>) i strzelec z Teksasu</h4>
+          <p>Produkowanie ~10 katastroficznych tez w każdym odcinku (653 tezy w niecałe 6 miesięcy) i powtarzanie tych samych wątków w 60–90% nagrań gwarantuje statystycznie, że <em>coś</em> zbiegnie się tematycznie. Później eksponuje się wyłącznie „trafienia” (<em>cherry-picking</em>).</p>
+        </div>
+        <div class="mech-card">
+          <h4>3. Asekuracja językowa (<em>hedging</em>, 71%)</h4>
+          <p>Wypowiedzi są nasycone sformułowaniami amortyzującymi porażkę: <em>„mam poczucie”</em>, <em>„coś koło tego”</em>, <em>„może podlegam sugestii”</em>, <em>„nie traktujcie tego dosłownie”</em>, <em>„chyba w Polsce”</em>. Gdy prognoza nie działa, autor zawsze ma furtkę wyjścia.</p>
+        </div>
+        <div class="mech-card">
+          <h4>4. Ruchoma bramka i brak dat (56%)</h4>
+          <p>56% wszystkich tez nie ma żadnej daty, a te z datami są wielokrotnie przesuwane w kolejnych odcinkach (np. wielkie uderzenie na Iran / krach / ewakuacja zapowiadane kolejno na czerwiec, lipiec, wrzesień, połowę listopada, koniec roku, 2027, 2028).</p>
+        </div>
+        <div class="mech-card">
+          <h4>5. Efekt Barnuma / ogólnikowość</h4>
+          <p>Zamiast konkretnych nazw, miejsc i liczb pojawiają się etykiety takie jak <em>„jakiś duży urząd”</em>, <em>„pewne państwo”</em>, <em>„bardzo znany polityk”</em>, <em>„coś bardzo ważnego”</em>. W dowolnym tygodniu na świecie zawsze dzieje się coś, co odbiorca może pod taką etykietę podłożyć.</p>
+        </div>
+        <div class="mech-card">
+          <h4>6. Katastrofizm i błąd negatywności</h4>
+          <p>Dominacja lękowych scenariuszy (wojna, skażenie, krach, zamach stanu, pandemia) silnie angażuje emocjonalnie i napędza oglądalność YouTube, a jednocześnie sprawia, że odbiorcy zapamiętują groźne obrazy i łączą je z każdą niepokojącą wiadomością.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section id="wniosek">
+      <div class="verdict-box">
+        <h2>5. Wniosek końcowy: czy dane pozwalają uznać Krzysztofa Jackowskiego za prawdziwego jasnowidza?</h2>
+        <p class="verdict-lead">Nie — zebrane dane empiryczne jednoznacznie temu przeczą.</p>
+        <ul>
+          <li><strong>0% trafień (0/11)</strong> wśród tez o wysokiej konkretności i falsyfikowalności.</li>
+          <li><strong>53,2% (33/62)</strong> jednoznacznie niepotwierdzonych tez oraz <strong>11,3% (7/62)</strong> zbyt ogólnych do weryfikacji.</li>
+          <li>Zaledwie <strong>6,5% (4/62)</strong> tez potwierdzonych — z czego <strong>3 to trywialne prognozy status quo / trwającej bessy</strong>, a <strong>1 to bezpośrednia ekstrapolacja już trwającego konfliktu zbrojnego</strong>.</li>
+          <li>Skuteczność jest <strong>niższa niż poziom zwykłego komentatora polityczno-ekonomicznego</strong> korzystającego z prasy codziennej i nie wykazuje żadnego statystycznego sygnału zdolności paranormalnych.</li>
+        </ul>
+        <p>
+          To, co sprawia wrażenie „trafności” u części odbiorców, jest w pełni wyjaśnialne przez kombinację:
+          <strong>dużej objętości powtarzanych prognoz (653 tezy w pół roku), braku dat (56%), ekstrapolacji bieżących newsów (79%), asekuracji językowej (71%) oraz dopasowywania ogólnych haseł do późniejszych zdarzeń</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 6: Interactive Browser -->
+    <section id="przegladarka">
+      <h2><span class="sec-num">6</span> Interaktywna przeglądarka 62 zweryfikowanych tez</h2>
+      <div class="card">
+        <div class="explorer-controls">
+          <input id="searchInput" class="search-input" type="search" placeholder="Szukaj po treści tezy, ID, cytacie, uzasadnieniu (np. Iran, Bitcoin, TK, 490)..." />
+          <select id="specSelect" class="select-input" aria-label="Filtruj po konkretności">
+            <option value="all">Konkretność: wszystkie</option>
+            <option value="wysoka">Konkretność: wysoka</option>
+            <option value="srednia">Konkretność: średnia</option>
+            <option value="niska">Konkretność: niska</option>
+          </select>
+        </div>
+        <div class="filter-pills" id="verdictPills">
+          <button class="pill-btn active" data-verdict="all">Wszystkie (62)</button>
+          <button class="pill-btn" data-verdict="potwierdzona">Potwierdzone (4)</button>
+          <button class="pill-btn" data-verdict="czesciowo_potwierdzona">Częściowo potwierdzone (18)</button>
+          <button class="pill-btn" data-verdict="niepotwierdzona">Niepotwierdzone (33)</button>
+          <button class="pill-btn" data-verdict="nieweryfikowalna_zbyt_ogolna">Nieweryfikowalne (7)</button>
+        </div>
+        <div id="claimsMeta" class="claims-meta">Ładowanie danych z <code>weryfikacja_tez_minionych_2026-11-21.json</code>...</div>
+        <div id="claimsList" class="claim-list"></div>
+      </div>
+    </section>
+
+    <!-- Section 7: Downloads -->
+    <section id="pliki">
+      <h2><span class="sec-num">7</span> Pliki źródłowe i dane do pobrania</h2>
+      <p style="color: var(--text-muted); margin-top: 0;">
+        Wszystkie zbiory danych (CSV, JSON), baza SQLite, raport Markdown oraz skrypty użyte do pobrania i analizy korpusu:
+      </p>
+
+      <div class="dl-grid">
+        <div class="dl-card">
+          <div>
+            <div class="dl-top"><span class="dl-ext ext-csv">CSV</span><span class="dl-size">75 KB</span></div>
+            <div class="dl-title">weryfikacja_tez_minionych_2026-11-21.csv</div>
+            <p class="dl-desc">Pełna tabela weryfikacji 62 minionych tez (werdykty, konkretność, mechanizmy, uzasadnienia, linki YouTube).</p>
+          </div>
+          <a class="dl-btn" href="./weryfikacja_tez_minionych_2026-11-21.csv" download>⬇ Pobierz CSV</a>
+        </div>
+
+        <div class="dl-card">
+          <div>
+            <div class="dl-top"><span class="dl-ext ext-json">JSON</span><span class="dl-size">118 KB</span></div>
+            <div class="dl-title">weryfikacja_tez_minionych_2026-11-21.json</div>
+            <p class="dl-desc">Strukturalny plik JSON z podsumowaniem statystycznym korpusu oraz pełną weryfikacją 62 tez.</p>
+          </div>
+          <a class="dl-btn" href="./weryfikacja_tez_minionych_2026-11-21.json" download>⬇ Pobierz JSON</a>
+        </div>
+
+        <div class="dl-card">
+          <div>
+            <div class="dl-top"><span class="dl-ext ext-db">SQLite DB</span><span class="dl-size">4,4 MB</span></div>
+            <div class="dl-title">jackowski.db</div>
+            <p class="dl-desc">Kompletna relacyjna baza danych SQLite: 69 filmów, 68 transkrypcji oraz wszystkie 653 wyodrębnione tezy.</p>
+          </div>
+          <a class="dl-btn" href="./jackowski.db" download>⬇ Pobierz jackowski.db</a>
+        </div>
+
+        <div class="dl-card">
+          <div>
+            <div class="dl-top"><span class="dl-ext ext-md">Markdown</span><span class="dl-size">10 KB</span></div>
+            <div class="dl-title">raport_weryfikacji_jackowski_2026.md</div>
+            <p class="dl-desc">Tekstowa wersja źródłowa niniejszego raportu w formacie Markdown.</p>
+          </div>
+          <a class="dl-btn" href="./raport_weryfikacji_jackowski_2026.md" download>⬇ Pobierz raport (.md)</a>
+        </div>
+
+        <div class="dl-card">
+          <div>
+            <div class="dl-top"><span class="dl-ext ext-csv">CSV</span><span class="dl-size">317 KB</span></div>
+            <div class="dl-title">tezy_przepowiednie_2026.csv</div>
+            <p class="dl-desc">Wszystkie 653 wyodrębnione tezy prognostyczne z 67 filmów (w tym przyszłe i bez daty).</p>
+          </div>
+          <a class="dl-btn" href="./tezy_przepowiednie_2026.csv" download>⬇ Pobierz CSV</a>
+        </div>
+
+        <div class="dl-card">
+          <div>
+            <div class="dl-top"><span class="dl-ext ext-json">JSON</span><span class="dl-size">467 KB</span></div>
+            <div class="dl-title">tezy_przepowiednie_2026.json</div>
+            <p class="dl-desc">Wszystkie 653 wyodrębnione tezy prognostyczne w formacie JSON.</p>
+          </div>
+          <a class="dl-btn" href="./tezy_przepowiednie_2026.json" download>⬇ Pobierz JSON</a>
+        </div>
+
+        <div class="dl-card">
+          <div>
+            <div class="dl-top"><span class="dl-ext ext-json">JSON</span><span class="dl-size">151 KB</span></div>
+            <div class="dl-title">tezy_minione_i_w_trakcie_2026-11-21.json</div>
+            <p class="dl-desc">Podzbiór tez o horyzoncie minionym lub w trakcie realizacji na dzień 2026-11-21.</p>
+          </div>
+          <a class="dl-btn" href="./tezy_minione_i_w_trakcie_2026-11-21.json" download>⬇ Pobierz JSON</a>
+        </div>
+
+        <div class="dl-card">
+          <div>
+            <div class="dl-top"><span class="dl-ext ext-csv">CSV</span><span class="dl-size">3,8 KB</span></div>
+            <div class="dl-title">wizja_na_zywo_2026.csv</div>
+            <p class="dl-desc">Metadane 69 filmów z serii „Wizja na żywo” (2026-05-28 – 2026-11-20) pobrane z archiwumwizji.pl.</p>
+          </div>
+          <a class="dl-btn" href="./wizja_na_zywo_2026.csv" download>⬇ Pobierz CSV</a>
+        </div>
+
+        <div class="dl-card">
+          <div>
+            <div class="dl-top"><span class="dl-ext ext-json">JSON</span><span class="dl-size">1,1 MB</span></div>
+            <div class="dl-title">transkrypcje.json</div>
+            <p class="dl-desc">Pełne transkrypcje ze znacznikami czasu dla 68 dostępnych filmów z korpusu.</p>
+          </div>
+          <a class="dl-btn" href="./transkrypcje.json" download>⬇ Pobierz JSON</a>
+        </div>
+      </div>
+
+      <h3>Skrypty źródłowe (Python)</h3>
+      <div class="dl-grid">
+        <div class="dl-card">
+          <div>
+            <div class="dl-top"><span class="dl-ext ext-py">Python</span><span class="dl-size">19 KB</span></div>
+            <div class="dl-title">scrape_wizja_na_zywo_2026.py</div>
+            <p class="dl-desc">Scraper listy odcinków „Wizja na żywo” 2026 z archiwumwizji.pl.</p>
+          </div>
+          <a class="dl-btn" href="./scrape_wizja_na_zywo_2026.py" download>⬇ Pobierz .py</a>
+        </div>
+        <div class="dl-card">
+          <div>
+            <div class="dl-top"><span class="dl-ext ext-py">Python</span><span class="dl-size">14 KB</span></div>
+            <div class="dl-title">fetch_transcripts.py</div>
+            <p class="dl-desc">Pobieranie transkrypcji YouTube ze znacznikami czasu do bazy i JSON.</p>
+          </div>
+          <a class="dl-btn" href="./fetch_transcripts.py" download>⬇ Pobierz .py</a>
+        </div>
+        <div class="dl-card">
+          <div>
+            <div class="dl-top"><span class="dl-ext ext-py">Python</span><span class="dl-size">8,7 KB</span></div>
+            <div class="dl-title">export_tezy_aktywne.py</div>
+            <p class="dl-desc">Eksport podzbioru tez minionych i aktywnych na zadany dzień odniesienia.</p>
+          </div>
+          <a class="dl-btn" href="./export_tezy_aktywne.py" download>⬇ Pobierz .py</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Raport weryfikacji przepowiedni Krzysztofa Jackowskiego („Wizja na żywo”, 2026) • Data odniesienia: <code>2026-11-21</code> •
+    <a href="https://github.com/rafik777/jackowski" target="_blank" rel="noopener">GitHub: rafik777/jackowski</a>
+  </footer>
+
+  <script>
+    (function () {
+      const VERDICT_META = {
+        potwierdzona: { label: 'Potwierdzona', cls: 'b-green' },
+        czesciowo_potwierdzona: { label: 'Częściowo potwierdzona', cls: 'b-amber' },
+        niepotwierdzona: { label: 'Niepotwierdzona', cls: 'b-red' },
+        nieweryfikowalna_zbyt_ogolna: { label: 'Nieweryfikowalna', cls: 'b-slate' }
+      };
+      const SPEC_LABELS = {
+        wysoka: 'Konkretność: wysoka',
+        srednia: 'Konkretność: średnia',
+        niska: 'Konkretność: niska'
+      };
+
+      let allClaims = [];
+      let activeVerdict = 'all';
+
+      const searchInput = document.getElementById('searchInput');
+      const specSelect = document.getElementById('specSelect');
+      const pillsContainer = document.getElementById('verdictPills');
+      const claimsMeta = document.getElementById('claimsMeta');
+      const claimsList = document.getElementById('claimsList');
+
+      function esc(str) {
+        return String(str || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function render() {
+        const q = searchInput.value.trim().toLowerCase();
+        const spec = specSelect.value;
+
+        const filtered = allClaims.filter((c) => {
+          if (activeVerdict !== 'all' && c.werdykt !== activeVerdict) return false;
+          if (spec !== 'all' && c.konkretnosc !== spec) return false;
+          if (q) {
+            const hay = [
+              c.id,
+              c.data_wypowiedzenia,
+              c.horyzont_czasowy,
+              c.kategoria,
+              c.teza,
+              c.cytat_zrodlowy,
+              c.uzasadnienie_faktograficzne,
+              (c.zrodla || []).join(' ')
+            ].join(' ').toLowerCase();
+            if (!hay.includes(q)) return false;
+          }
+          return true;
+        });
+
+        claimsMeta.textContent = `Wyświetlono ${filtered.length} z ${allClaims.length} zweryfikowanych tez.`;
+
+        if (!filtered.length) {
+          claimsList.innerHTML = '<div class="callout" style="margin:0">Brak tez spełniających wybrane kryteria filtrowania.</div>';
+          return;
+        }
+
+        claimsList.innerHTML = filtered.map((c) => {
+          const v = VERDICT_META[c.werdykt] || { label: c.werdykt, cls: 'b-slate' };
+          const sLabel = SPEC_LABELS[c.konkretnosc] || c.konkretnosc;
+          const sources = (c.zrodla || []).length ? `Źródła: ${esc(c.zrodla.join(', '))}` : '';
+          const yt = c.youtube_link_z_czasem
+            ? `<a class="yt-link" href="${esc(c.youtube_link_z_czasem)}" target="_blank" rel="noopener">▶ Fragment na YouTube ↗</a>`
+            : '';
+
+          return `
+            <article class="claim-item">
+              <div class="claim-header">
+                <span class="claim-id">ID=${esc(c.id)} • ${esc(c.data_wypowiedzenia)} • Horyzont: ${esc(c.horyzont_czasowy)}</span>
+                <div class="claim-badges">
+                  <span class="badge ${v.cls}">${esc(v.label)}</span>
+                  <span class="badge b-blue">${esc(sLabel)}</span>
+                </div>
+              </div>
+              <p class="claim-title">${esc(c.teza)}</p>
+              ${c.cytat_zrodlowy ? `<blockquote class="claim-quote">„${esc(c.cytat_zrodlowy)}”</blockquote>` : ''}
+              <p class="claim-just">${esc(c.uzasadnienie_faktograficzne)}</p>
+              <div class="claim-footer">
+                <span>${sources}</span>
+                ${yt}
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      pillsContainer.addEventListener('click', (e) => {
+        const btn = e.target.closest('.pill-btn');
+        if (!btn) return;
+        pillsContainer.querySelectorAll('.pill-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeVerdict = btn.dataset.verdict;
+        render();
+      });
+
+      searchInput.addEventListener('input', render);
+      specSelect.addEventListener('change', render);
+
+      fetch('./weryfikacja_tez_minionych_2026-11-21.json')
+        .then((res) => {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then((data) => {
+          allClaims = Array.isArray(data.weryfikacje) ? data.weryfikacje : [];
+          render();
+        })
+        .catch(() => {
+          claimsMeta.innerHTML = 'Nie udało się załadować <code>weryfikacja_tez_minionych_2026-11-21.json</code> (przeglądarka blokuje <code>fetch</code> przy otwarciu lokalnym <code>file://</code> — po publikacji na GitHub Pages lub przez lokalny serwer HTTP lista załaduje się automatycznie).';
+        });
+    })();
+  </script>
+</body>
+</html>
