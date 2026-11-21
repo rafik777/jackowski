@@ -471,15 +471,13 @@
     .yt-inline {
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
-      margin-left: 0.3rem;
+      gap: 0.35rem;
       color: var(--ink);
       font-size: 0.83rem;
       font-weight: 500;
       text-decoration: none;
-      vertical-align: -2px;
       white-space: nowrap;
-      opacity: 0.88;
+      opacity: 0.85;
       transition: opacity 0.12s ease;
     }
     .yt-inline:hover {
@@ -488,9 +486,68 @@
       text-decoration: underline;
     }
     .yt-inline svg {
-      width: 16px;
-      height: 11px;
+      width: 17px;
+      height: 12px;
+      display: block;
       flex-shrink: 0;
+      fill: #dc2626;
+    }
+
+    /* Structured claim reference list (ID | Content | YT icon) */
+    .note ul.ref-list,
+    .note ol.ref-list {
+      list-style: none;
+      margin: 0.85rem 0 0;
+      padding: 0;
+      border-top: 1px solid var(--rule);
+    }
+    .note .ref-item {
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr) 26px;
+      gap: 0.75rem;
+      align-items: start;
+      padding: 0.6rem 0;
+      margin: 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.93rem;
+    }
+    .note .ref-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .ref-id {
+      font-size: 0.84rem;
+      font-weight: 600;
+      white-space: nowrap;
+      line-height: 1.65;
+    }
+    .ref-text {
+      min-width: 0;
+      line-height: 1.55;
+    }
+    .ref-meta {
+      display: block;
+      margin-top: 0.25rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+    .ref-yt {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 1.55em;
+      width: 24px;
+      opacity: 0.82;
+      transition: opacity 0.12s ease, transform 0.12s ease;
+    }
+    .ref-yt:hover {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+    .ref-yt svg {
+      width: 18px;
+      height: 13px;
+      display: block;
       fill: #dc2626;
     }
 
@@ -569,6 +626,7 @@
     .claim-meta-line {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 0.5rem 1.5rem;
       font-size: 0.83rem;
       color: var(--muted);
@@ -774,24 +832,76 @@
           <p>
             Wśród 62 zweryfikowanych tez <strong>11 miało wysoką konkretność</strong> (konkretna data lub okno kilku dni, wskazany podmiot i falsyfikowalne zdarzenie). Wynik: <strong>0 potwierdzonych (0,0%)</strong>, 2 częściowo potwierdzone (18,2%) oraz <strong>9 niepotwierdzonych (81,8%)</strong> — m.in.:
           </p>
-          <ul>
-            <li>wielkie uderzenie USA i Izraela na Iran między 9 a 17 września 2026 (<a href="#teza-490" data-jump-id="490" title="Przejdź do pełnej weryfikacji ID 490">ID 490</a><a class="yt-inline" href="https://www.youtube.com/watch?v=7E80CLFU0ck&amp;t=644s" target="_blank" rel="noopener" title="Otwórz fragment wypowiedzi na YouTube (10:44)" aria-label="YouTube: ID 490 (10:44)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>),</li>
-            <li>zamach bombowy ok. 25 lipca 2026 po 40 dniach spokoju (<a href="#teza-569" data-jump-id="569" title="Przejdź do pełnej weryfikacji ID 569">ID 569</a><a class="yt-inline" href="https://www.youtube.com/watch?v=tGpD3o47OOg&amp;t=2147s" target="_blank" rel="noopener" title="Otwórz fragment wypowiedzi na YouTube (35:47)" aria-label="YouTube: ID 569 (35:47)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>),</li>
-            <li>zmasowany atak Iranu na Izrael w ciągu 5 dni od 11 czerwca (<a href="#teza-577" data-jump-id="577" title="Przejdź do pełnej weryfikacji ID 577">ID 577</a><a class="yt-inline" href="https://www.youtube.com/watch?v=MfWBe1hNCS4&amp;t=816s" target="_blank" rel="noopener" title="Otwórz fragment wypowiedzi na YouTube (13:36)" aria-label="YouTube: ID 577 (13:36)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>),</li>
-            <li>tajfuny nad Czechami, Słowacją, Węgrami, Rumunią i okolicami Rzeszowa latem 2026 (<a href="#teza-571" data-jump-id="571" title="Przejdź do pełnej weryfikacji ID 571">ID 571</a><a class="yt-inline" href="https://www.youtube.com/watch?v=tGpD3o47OOg&amp;t=2628s" target="_blank" rel="noopener" title="Otwórz fragment wypowiedzi na YouTube (43:48)" aria-label="YouTube: ID 571 (43:48)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>),</li>
-            <li>wielki wyż i stabilna ładna pogoda 20 sierpnia – 20 września 2026 (<a href="#teza-446" data-jump-id="446" title="Przejdź do pełnej weryfikacji ID 446">ID 446</a><a class="yt-inline" href="https://www.youtube.com/watch?v=KAjxr-4NQQQ&amp;t=427s" target="_blank" rel="noopener" title="Otwórz fragment wypowiedzi na YouTube (07:07)" aria-label="YouTube: ID 446 (07:07)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>),</li>
-            <li>głośne wydarzenia wokół Trybunału Konstytucyjnego w konkretną środę 4 listopada (<a href="#teza-82" data-jump-id="82" title="Przejdź do pełnej weryfikacji ID 82">ID 82</a><a class="yt-inline" href="https://www.youtube.com/watch?v=j2i9My1JEeg&amp;t=790s" target="_blank" rel="noopener" title="Otwórz fragment wypowiedzi na YouTube (13:10)" aria-label="YouTube: ID 82 (13:10)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>).</li>
+          <ul class="ref-list">
+            <li class="ref-item">
+              <a class="ref-id" href="#teza-490" data-jump-id="490" title="Przejdź do pełnej weryfikacji ID 490">ID 490</a>
+              <div class="ref-text">Wielkie uderzenie USA i Izraela na Iran między 9 a 17 września 2026</div>
+              <a class="ref-yt" href="https://www.youtube.com/watch?v=7E80CLFU0ck&amp;t=644s" target="_blank" rel="noopener" title="Fragment na YouTube (10:44)" aria-label="YouTube: ID 490 (10:44)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>
+            </li>
+            <li class="ref-item">
+              <a class="ref-id" href="#teza-569" data-jump-id="569" title="Przejdź do pełnej weryfikacji ID 569">ID 569</a>
+              <div class="ref-text">Zamach bombowy ok. 25 lipca 2026 po 40 dniach spokoju</div>
+              <a class="ref-yt" href="https://www.youtube.com/watch?v=tGpD3o47OOg&amp;t=2147s" target="_blank" rel="noopener" title="Fragment na YouTube (35:47)" aria-label="YouTube: ID 569 (35:47)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>
+            </li>
+            <li class="ref-item">
+              <a class="ref-id" href="#teza-577" data-jump-id="577" title="Przejdź do pełnej weryfikacji ID 577">ID 577</a>
+              <div class="ref-text">Zmasowany atak Iranu na Izrael w ciągu 5 dni od 11 czerwca</div>
+              <a class="ref-yt" href="https://www.youtube.com/watch?v=MfWBe1hNCS4&amp;t=816s" target="_blank" rel="noopener" title="Fragment na YouTube (13:36)" aria-label="YouTube: ID 577 (13:36)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>
+            </li>
+            <li class="ref-item">
+              <a class="ref-id" href="#teza-571" data-jump-id="571" title="Przejdź do pełnej weryfikacji ID 571">ID 571</a>
+              <div class="ref-text">Tajfuny nad Czechami, Słowacją, Węgrami, Rumunią i okolicami Rzeszowa latem 2026</div>
+              <a class="ref-yt" href="https://www.youtube.com/watch?v=tGpD3o47OOg&amp;t=2628s" target="_blank" rel="noopener" title="Fragment na YouTube (43:48)" aria-label="YouTube: ID 571 (43:48)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>
+            </li>
+            <li class="ref-item">
+              <a class="ref-id" href="#teza-446" data-jump-id="446" title="Przejdź do pełnej weryfikacji ID 446">ID 446</a>
+              <div class="ref-text">Wielki wyż i stabilna ładna pogoda 20 sierpnia – 20 września 2026</div>
+              <a class="ref-yt" href="https://www.youtube.com/watch?v=KAjxr-4NQQQ&amp;t=427s" target="_blank" rel="noopener" title="Fragment na YouTube (07:07)" aria-label="YouTube: ID 446 (07:07)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>
+            </li>
+            <li class="ref-item">
+              <a class="ref-id" href="#teza-82" data-jump-id="82" title="Przejdź do pełnej weryfikacji ID 82">ID 82</a>
+              <div class="ref-text">Głośne wydarzenia wokół Trybunału Konstytucyjnego w konkretną środę 4 listopada</div>
+              <a class="ref-yt" href="https://www.youtube.com/watch?v=j2i9My1JEeg&amp;t=790s" target="_blank" rel="noopener" title="Fragment na YouTube (13:10)" aria-label="YouTube: ID 82 (13:10)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>
+            </li>
           </ul>
         </div>
 
         <h3>Jakie były 4 „potwierdzone” tezy?</h3>
         <div class="note green">
           <p>Żadna z czterech potwierdzonych tez nie miała cech nieprawdopodobnego, ponadnaturalnego trafienia:</p>
-          <ol>
-            <li><strong><a href="#teza-437" data-jump-id="437" title="Przejdź do pełnej weryfikacji ID 437">ID 437</a> (2026-07-24, niska konkretność)<a class="yt-inline" href="https://www.youtube.com/watch?v=AFIp-0ytSoU&amp;t=1152s" target="_blank" rel="noopener" title="Otwórz fragment wypowiedzi na YouTube (19:12)" aria-label="YouTube: ID 437 (19:12)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>:</strong> <em>„W najbliższym okresie czasu nie dojdzie do blokady internetu.”</em> — prognoza zachowania status quo („nic się nie wydarzy”).</li>
-            <li><strong><a href="#teza-615" data-jump-id="615" title="Przejdź do pełnej weryfikacji ID 615">ID 615</a> (2026-06-05, średnia konkretność)<a class="yt-inline" href="https://www.youtube.com/watch?v=mPsEI1f5BzQ&amp;t=2791s" target="_blank" rel="noopener" title="Otwórz fragment wypowiedzi na YouTube (46:31)" aria-label="YouTube: ID 615 (46:31)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>:</strong> <em>„W czerwcu zarówno w Tunezji, jak i w Egipcie będzie bezpiecznie.”</em> — prognoza status quo (brak zamachów w kurortach w jednym miesiącu).</li>
-            <li><strong><a href="#teza-475" data-jump-id="475" title="Przejdź do pełnej weryfikacji ID 475">ID 475</a> (2026-07-14, średnia konkretność, ekstrapolacja newsów)<a class="yt-inline" href="https://www.youtube.com/watch?v=IZcb6EzO2ZI&amp;t=249s" target="_blank" rel="noopener" title="Otwórz fragment wypowiedzi na YouTube (04:09)" aria-label="YouTube: ID 475 (04:09)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>:</strong> <em>„Bitcoin nie powróci do swoich wcześniejszych szczytowych poziomów cenowych przynajmniej w najbliższym czasie.”</em> — w dniu wypowiedzi BTC kosztował ~63 tys. USD przy szczycie ~126 tys. USD (październik 2025); prognoza braku szybkiego wzrostu o +100% w bessie to zwykła ekstrapolacja rynkowa.</li>
-            <li><strong><a href="#teza-641" data-jump-id="641" title="Przejdź do pełnej weryfikacji ID 641">ID 641</a> (2026-05-28, średnia konkretność, ekstrapolacja newsów)<a class="yt-inline" href="https://www.youtube.com/watch?v=PEDdNzu6thM&amp;t=1593s" target="_blank" rel="noopener" title="Otwórz fragment wypowiedzi na YouTube (26:33)" aria-label="YouTube: ID 641 (26:33)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>:</strong> <em>„W czerwcu wznowione zostaną okazjonalne działania wojenne przeciwko Iranowi wraz z irańskimi atakami odwetowymi, lecz bez zmasowanego ataku i bez lądowej interwencji USA oraz Izraela.”</em> — wojna trwała już od lutego 2026, a w maju obowiązywał kruchy rozejm przerywany starciami; taki scenariusz odpowiadał konsensusowi analityków z końca maja.</li>
+          <ol class="ref-list">
+            <li class="ref-item">
+              <a class="ref-id" href="#teza-437" data-jump-id="437" title="Przejdź do pełnej weryfikacji ID 437">ID 437</a>
+              <div class="ref-text">
+                <em>„W najbliższym okresie czasu nie dojdzie do blokady internetu.”</em>
+                <span class="ref-meta">2026-07-24, niska konkretność — prognoza zachowania status quo („nic się nie wydarzy”).</span>
+              </div>
+              <a class="ref-yt" href="https://www.youtube.com/watch?v=AFIp-0ytSoU&amp;t=1152s" target="_blank" rel="noopener" title="Fragment na YouTube (19:12)" aria-label="YouTube: ID 437 (19:12)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>
+            </li>
+            <li class="ref-item">
+              <a class="ref-id" href="#teza-615" data-jump-id="615" title="Przejdź do pełnej weryfikacji ID 615">ID 615</a>
+              <div class="ref-text">
+                <em>„W czerwcu zarówno w Tunezji, jak i w Egipcie będzie bezpiecznie.”</em>
+                <span class="ref-meta">2026-06-05, średnia konkretność — prognoza status quo (brak zamachów w kurortach w jednym miesiącu).</span>
+              </div>
+              <a class="ref-yt" href="https://www.youtube.com/watch?v=mPsEI1f5BzQ&amp;t=2791s" target="_blank" rel="noopener" title="Fragment na YouTube (46:31)" aria-label="YouTube: ID 615 (46:31)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>
+            </li>
+            <li class="ref-item">
+              <a class="ref-id" href="#teza-475" data-jump-id="475" title="Przejdź do pełnej weryfikacji ID 475">ID 475</a>
+              <div class="ref-text">
+                <em>„Bitcoin nie powróci do swoich wcześniejszych szczytowych poziomów cenowych przynajmniej w najbliższym czasie.”</em>
+                <span class="ref-meta">2026-07-14, średnia konkretność, ekstrapolacja newsów — w dniu wypowiedzi BTC kosztował ~63 tys. USD przy szczycie ~126 tys. USD (październik 2025); prognoza braku szybkiego wzrostu o +100% w bessie to zwykła ekstrapolacja rynkowa.</span>
+              </div>
+              <a class="ref-yt" href="https://www.youtube.com/watch?v=IZcb6EzO2ZI&amp;t=249s" target="_blank" rel="noopener" title="Fragment na YouTube (04:09)" aria-label="YouTube: ID 475 (04:09)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>
+            </li>
+            <li class="ref-item">
+              <a class="ref-id" href="#teza-641" data-jump-id="641" title="Przejdź do pełnej weryfikacji ID 641">ID 641</a>
+              <div class="ref-text">
+                <em>„W czerwcu wznowione zostaną okazjonalne działania wojenne przeciwko Iranowi wraz z irańskimi atakami odwetowymi, lecz bez zmasowanego ataku i bez lądowej interwencji USA oraz Izraela.”</em>
+                <span class="ref-meta">2026-05-28, średnia konkretność, ekstrapolacja newsów — wojna trwała już od lutego 2026, a w maju obowiązywał kruchy rozejm przerywany starciami; taki scenariusz odpowiadał konsensusowi analityków z końca maja.</span>
+              </div>
+              <a class="ref-yt" href="https://www.youtube.com/watch?v=PEDdNzu6thM&amp;t=1593s" target="_blank" rel="noopener" title="Fragment na YouTube (26:33)" aria-label="YouTube: ID 641 (26:33)"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.4 31.4 0 0 0 .5-5.8 31.4 31.4 0 0 0-.5-5.8zM9.6 12.1V4.9l6.3 3.6-6.3 3.6z"/></svg></a>
+            </li>
           </ol>
         </div>
       </section>
